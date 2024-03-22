@@ -1,5 +1,9 @@
 ﻿
 
+using System;
+using System.Diagnostics;
+using System.Numerics;
+
 namespace SearchingAlgorithms
 {
 
@@ -50,29 +54,29 @@ namespace SearchingAlgorithms
             Console.WriteLine(" Testing DSA.LinearSearch<T>( ) ");
             Console.WriteLine("---------------------------------");
 
-			int n, match;
-			double[] list;
-			double key;
-			string input;
-			bool check;
+            int n, match;
+            double[] list;
+            double key;
+            string input;
+            bool check;
             Console.Write("Enter the number of list elements: ");
-			input = Console.ReadLine();
-			check = int.TryParse(input, out n);
-			if(!check) { return ; }
-			list= new double[n];  // Create a list[n]
-			for (int i = 0; i < n; i++) //Enter the list elements
-			{
-				do
-				{
-					Console.WriteLine("Enter element no.{0}:", i+1);
-					input= Console.ReadLine();
-					check= double.TryParse(input, out list[i]);
-				} while (!check);
-			}
-			Console.WriteLine("Enter the Search key:");
-			input = Console.ReadLine() ;
-			check= double.TryParse(input, out key);
-			if(!check) { return ; }
+            input = Console.ReadLine();
+            check = int.TryParse(input, out n);
+            if (!check) { return; }
+            list= new double[n];  // Create a list[n]
+            for (int i = 0; i < n; i++) //Enter the list elements
+            {
+                do
+                {
+                    Console.WriteLine("Enter element no.{0}:", i+1);
+                    input= Console.ReadLine();
+                    check= double.TryParse(input, out list[i]);
+                } while (!check);
+            }
+            Console.WriteLine("Enter the Search key:");
+            input = Console.ReadLine();
+            check= double.TryParse(input, out key);
+            if (!check) { return; }
             watch.Start();
             match = LinearSearch1(list, key); //Perform the search
             watch.Stop();
@@ -84,6 +88,44 @@ namespace SearchingAlgorithms
 
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);
+
+            #region watch the difference betweeen TimSort (in built-in Method of Array.Sort() ) with Objects-Integer and with Primitive datatype-int
+
+            /**  TimSort (in built-in Method of Array.Sort() ) with Primitive datatype-int
+             * This algorithm offers O(n log(n)) average time complexity
+             * in the worst case, its time complexity is O(n2). 
+             * /
+             */
+
+            /**
+             * Arrays.sort(Object[]) is based on the TimSort algorithm, giving us a time complexity of O(n log(n)). 
+             * In short, TimSort makes use of the Insertion sort and the MergeSort algorithms. 
+             * However, it is still slower compared to other sorting algorithms like some of the QuickSort implementations.
+             * **/
+
+            //var watch = new System.Diagnostics.Stopwatch();
+            //BigInteger[] numbers = {-769214442, -1283881723, 1504158300, -1260321086, -1800976432, 1278262737,
+            //                      1863224321, 1895424914, 2062768552, -1051922993, 751605209, -1500919212, 2094856518,
+            //                      -1014488489, -931226326, -1677121986, -2080561705, 562424208, -1233745158, 41308167 };
+            //int[] primitives = {-769214442, -1283881723, 1504158300, -1260321086, -1800976432, 1278262737,
+            //                      1863224321, 1895424914, 2062768552, -1051922993, 751605209, -1500919212, 2094856518,
+            //                      -1014488489, -931226326, -1677121986, -2080561705, 562424208, -1233745158, 41308167};
+
+
+            //watch.Start();
+            //Array.Sort(primitives);
+            //Array.ForEach(primitives, Console.WriteLine);
+            //Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            //watch.Stop();
+
+            //watch.Start();
+            //Array.Sort(numbers);
+            //Console.WriteLine($"Execution Time: {watch.ElapsedMilliseconds} ms");
+            //watch.Stop();
+
+            #endregion
+
+
         }
     }
 }
