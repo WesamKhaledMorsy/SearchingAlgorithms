@@ -6,7 +6,7 @@ using System.Xml.Linq;
 namespace SearchingAlgorithms
 {
 
-    class SearchingAlgorithms_LinkedList
+    class SearchingAlgorithms_DoubleLinkedList
     {
         public sealed class DLinkedListNode<T>
         {
